@@ -43,7 +43,7 @@ import feedbackRoutes from "./Routes/Feedback.js";
 const app = express();
 
 const allowedOrigins = [
-    "https://online-complaint-registeration-olqahq078.vercel.app/",
+    "https://online-complaint-registeration-olqahq078.vercel.app",
     "http://localhost:5173",
     "http://localhost:5174",
 ];
