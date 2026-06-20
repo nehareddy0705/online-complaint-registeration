@@ -45,7 +45,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-    origin: ["https://online-complaint-registeration.vercel.app", "http://localhost:5173"],
+    origin: ["https://online-complaint-registeration-olb1nxzj3.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
@@ -71,7 +71,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://online-complaint-registeration.vercel.app"
+        origin: ["https://online-complaint-registeration-olb1nxzj3.vercel.app", "http://localhost:5173"]
     }
 });
 
