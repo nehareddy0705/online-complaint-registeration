@@ -44,14 +44,12 @@ const app = express();
 
 const staticAllowedOrigins = [
     "https://online-complaint-registeration.vercel.app",
-    "https://online-complaint-registeration-olqahq078.vercel.app",
-    "https://vip-c2-online-complaint-registerati.vercel.app",
     "http://localhost:5173",
     "http://localhost:5174",
 ];
 
 const vercelOriginPattern =
-    /^https:\/\/(online-complaint-registeration|vip-c2-online-complaint-registerati).*\.vercel\.app$/;
+    /^https:\/\/online-complaint-registeration.*\.vercel\.app$/;
 
 const isAllowedOrigin = (origin) => {
     if (!origin) return true;
@@ -116,6 +114,23 @@ const io = new Server(server, {
         methods: ["GET", "POST"],
         credentials: true,
     },
+});
+
+io.engine.on("headers", (headers, req) => {
+    const origin = req.headers.origin;
+    if (origin && isAllowedOrigin(origin)) {
+        headers["Access-Control-Allow-Origin"] = origin;
+        headers["Access-Control-Allow-Credentials"] = "true";
+    }
+});
+
+app.get("/api/health", (req, res) => {
+    res.json({
+        status: "ok",
+        corsVersion: 2,
+        allowedOrigins: staticAllowedOrigins,
+        clientUrl: process.env.CLIENT_URL || null,
+    });
 });
 
 io.on("connection", (socket) => {
