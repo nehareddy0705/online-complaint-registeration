@@ -168,8 +168,8 @@ online-complaint-registeration
 ### Clone Repository
 
 ```bash
-git clone https://github.com/suchithreddy-07/-VIP-C2--Online-complaint-registration.git
-cd -VIP-C2--Online-complaint-registration
+git clone https://github.com/nehareddy0705/online-complaint-registeration
+cd online-complaint-registeration
 ```
 
 ### Backend Setup
