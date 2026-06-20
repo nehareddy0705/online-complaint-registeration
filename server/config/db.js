@@ -30,6 +30,11 @@ const connectDB = async () => {
     await seedAdmin();
   } catch (error) {
     console.error(`MongoDB Connection Error: ${error.message}`);
+    if (error.message.includes("unescaped characters")) {
+      console.error(
+        "Tip: URL-encode special characters in your MongoDB password inside MONGO_URI (e.g. @ becomes %40)."
+      );
+    }
     process.exit(1);
   }
 };

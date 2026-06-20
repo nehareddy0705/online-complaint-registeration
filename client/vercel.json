@@ -3,10 +3,6 @@
     {
       "source": "/api/:path*",
       "destination": "https://complaint-registeration.onrender.com/api/:path*"
-    },
-    {
-      "source": "/socket.io/:path*",
-      "destination": "https://complaint-registeration.onrender.com/socket.io/:path*"
     }
   ]
 }

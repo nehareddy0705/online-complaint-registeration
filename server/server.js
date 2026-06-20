@@ -103,6 +103,7 @@ app.get("/", (req, res) => {
 const server = http.createServer(app);
 
 const io = new Server(server, {
+    path: "/api/socket",
     cors: {
         origin: (origin, callback) => {
             if (isAllowedOrigin(origin)) {

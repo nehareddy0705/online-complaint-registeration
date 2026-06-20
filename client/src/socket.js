@@ -1,9 +1,16 @@
 import { io } from "socket.io-client";
 
-const socket =
-  import.meta.env.DEV && import.meta.env.VITE_SOCKET_URL
-    ? io(import.meta.env.VITE_SOCKET_URL)
-    : io({ path: "/socket.io" });
+let socket = null;
 
-export default socket;
+const SOCKET_PATH = "/api/socket";
 
+export const getSocket = () => {
+  if (!socket) {
+    socket = import.meta.env.DEV
+      ? io("http://localhost:5000", { path: SOCKET_PATH })
+      : io({ path: SOCKET_PATH });
+  }
+  return socket;
+};
+
+export default getSocket;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import socket from "../socket";
+import { getSocket } from "../socket";
 import { messageAPI } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { Send, User as UserIcon, ShieldAlert } from "lucide-react";
@@ -18,6 +18,8 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
 
   useEffect(() => {
     if (!complaintId) return;
+
+    const socket = getSocket();
 
     // 1. Fetch chat history
     const fetchChatHistory = async () => {
@@ -119,7 +121,7 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
         };
 
         // Emit message to Socket
-        socket.emit("sendMessage", payload);
+        getSocket().emit("sendMessage", payload);
 
         // Update local state
         setMessages((prev) => [...prev, payload]);
