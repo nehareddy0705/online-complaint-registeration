@@ -216,7 +216,7 @@ const Home = () => {
           <p className="m-0">© 2026 Sahaay. All rights reserved.</p>
           <div className="flex space-x-4">
             <a
-              href="https://online-complaint-registeration.onrender.com"
+              href="https://online-complaint-registeration.vercel.app/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-white cursor-pointer transition"

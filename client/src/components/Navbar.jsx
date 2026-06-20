@@ -29,7 +29,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center space-x-3 text-white/60">
           <a
-            href="https://online-complaint-registeration.onrender.com"
+            href="https://online-complaint-registeration.vercel.app/"
             target="_blank"
             rel="noreferrer"
             className="cursor-pointer hover:text-white transition"
