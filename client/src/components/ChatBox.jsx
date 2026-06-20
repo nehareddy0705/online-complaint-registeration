@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSocket } from "../socket";
+import socket from "../socket";
 import { messageAPI } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { Send, User as UserIcon, ShieldAlert } from "lucide-react";
@@ -18,8 +18,6 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
 
   useEffect(() => {
     if (!complaintId) return;
-
-    const socket = getSocket();
 
     // 1. Fetch chat history
     const fetchChatHistory = async () => {
@@ -121,7 +119,7 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
         };
 
         // Emit message to Socket
-        getSocket().emit("sendMessage", payload);
+        socket.emit("sendMessage", payload);
 
         // Update local state
         setMessages((prev) => [...prev, payload]);
@@ -144,27 +142,27 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
   const hasAgent = !!agent;
 
   return (
-    <div className="surface-panel flex flex-col h-125 rounded-3xl overflow-hidden">
+    <div className="flex flex-col h-[500px] bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
       {/* Header */}
-      <div className="bg-[linear-gradient(135deg,#24384d_0%,#3f5f78_100%)] text-white px-5 py-4 flex items-center justify-between border-b border-white/10">
+      <div className="bg-gov-primary text-white px-5 py-4 flex items-center justify-between border-b border-gov-accent">
         <div>
           <h4 className="text-sm font-bold m-0 flex items-center space-x-1.5">
             <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping"></span>
             <span>Real-time Assistance Chat</span>
           </h4>
-          <p className="text-[10px] text-white/75 m-0 mt-0.5">
+          <p className="text-[10px] text-blue-100 m-0 mt-0.5">
             {hasAgent ? `Chatting with Agent: ${agent.name}` : "Grievance Chat Room"}
           </p>
         </div>
       </div>
 
       {/* Messages List */}
-      <div className="flex-1 overflow-y-auto p-4 bg-[#f8f3ea] space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 bg-slate-50 space-y-4">
         {messages.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center p-6">
-            <UserIcon className="w-8 h-8 text-gov-primary/50 mb-2" />
+            <UserIcon className="w-8 h-8 text-slate-300 mb-2" />
             <p className="text-xs text-slate-500 font-medium">No messages yet.</p>
-            <p className="text-[10px] text-slate-400 max-w-50 mt-1">
+            <p className="text-[10px] text-slate-400 max-w-[200px] mt-1">
               Ask questions or update status directly in this secure chat channel.
             </p>
           </div>
@@ -180,29 +178,29 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
                 <div
                   className={`max-w-[75%] px-4 py-2.5 rounded-2xl shadow-sm text-sm ${
                     isMe
-                      ? "bg-gov-dark text-white rounded-tr-none"
-                      : "bg-white text-slate-800 border border-[#d8cbb8] rounded-tl-none"
+                      ? "bg-gov-primary text-white rounded-tr-none"
+                      : "bg-white text-slate-800 border border-slate-200 rounded-tl-none"
                   }`}
                 >
                   <div className="flex items-center space-x-1.5 mb-1 flex-wrap">
-                    <span className={`text-[10px] font-bold ${isMe ? "text-white/80" : "text-slate-800"}`}>
+                    <span className={`text-[10px] font-bold ${isMe ? "text-blue-100" : "text-slate-800"}`}>
                       {msg.sender?.name || "System"}
                     </span>
                     <span className={`text-[8px] font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider ${
                       role === "ADMIN"
-                        ? "bg-[#7a4f47] text-white"
+                        ? "bg-red-500 text-white"
                         : role === "AGENT"
-                        ? "bg-gov-primary text-white"
-                        : "bg-gov-secondary text-gov-dark"
+                        ? "bg-amber-500 text-white"
+                        : "bg-blue-500 text-white"
                     }`}>
                       {role}
                     </span>
                   </div>
-                  <p className="whitespace-pre-wrap leading-relaxed m-0 wrap-break-word">
+                  <p className="whitespace-pre-wrap leading-relaxed m-0 break-words">
                     {msg.message}
                   </p>
                 </div>
-                <span className="text-[9px] text-slate-500 mt-1 px-1">
+                <span className="text-[9px] text-slate-400 mt-1 px-1">
                   {new Date(msg.createdAt).toLocaleTimeString("en-IN", {
                     hour: "2-digit",
                     minute: "2-digit",
@@ -218,7 +216,7 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
       {hasAgent || (user && user.role === "ADMIN") ? (
         <form
           onSubmit={handleSend}
-          className="border-t border-[#d8cbb8] bg-white/75 p-3 flex items-center space-x-2"
+          className="border-t border-slate-200 bg-white p-3 flex items-center space-x-2"
         >
           {(() => {
             const isAgentBlocked = user && user.role === "AGENT" && status === "REJECTED";
@@ -229,13 +227,13 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder={isAgentBlocked ? "This complaint is REJECTED. Chat is disabled for agents." : "Type your message here..."}
-                  className="flex-1 text-sm border border-[#d8cbb8] rounded-full px-4 py-2.5 focus:outline-none focus:border-gov-dark bg-white focus:bg-white transition"
+                  className="flex-1 text-sm border border-slate-200 rounded-lg px-4 py-2.5 focus:outline-none focus:border-gov-primary bg-slate-50 focus:bg-white transition"
                   disabled={sending || isAgentBlocked}
                 />
                 <button
                   type="submit"
                   disabled={!text.trim() || sending || isAgentBlocked}
-                  className="bg-gov-dark hover:bg-gov-accent text-white p-2.5 rounded-full disabled:opacity-50 transition shadow-sm shrink-0"
+                  className="bg-gov-primary hover:bg-gov-accent text-white p-2.5 rounded-lg disabled:opacity-50 transition shadow-sm flex-shrink-0"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -244,9 +242,9 @@ const ChatBox = ({ complaintId, citizen, agent, status }) => {
           })()}
         </form>
       ) : (
-        <div className="bg-[#efe3d0] border-t border-[#d8cbb8] p-4 text-center flex items-center justify-center space-x-2">
-          <ShieldAlert className="w-4 h-4 text-gov-dark" />
-          <span className="text-xs text-gov-dark font-medium">
+        <div className="bg-amber-50 border-t border-amber-100 p-4 text-center flex items-center justify-center space-x-2">
+          <ShieldAlert className="w-4 h-4 text-amber-600" />
+          <span className="text-xs text-amber-800 font-medium">
             Waiting for an agent to be assigned before starting live chat.
           </span>
         </div>
