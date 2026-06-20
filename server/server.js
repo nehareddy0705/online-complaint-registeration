@@ -42,16 +42,34 @@ import feedbackRoutes from "./Routes/Feedback.js";
 
 const app = express();
 
-const allowedOrigins = [
+const staticAllowedOrigins = [
+    "https://online-complaint-registeration.vercel.app",
     "https://online-complaint-registeration-olqahq078.vercel.app",
+    "https://vip-c2-online-complaint-registerati.vercel.app",
     "http://localhost:5173",
     "http://localhost:5174",
 ];
 
+const vercelOriginPattern =
+    /^https:\/\/(online-complaint-registeration|vip-c2-online-complaint-registerati).*\.vercel\.app$/;
+
+const isAllowedOrigin = (origin) => {
+    if (!origin) return true;
+    if (staticAllowedOrigins.includes(origin)) return true;
+    if (vercelOriginPattern.test(origin)) return true;
+
+    const envOrigins = (process.env.CLIENT_URL || "")
+        .split(",")
+        .map((url) => url.trim())
+        .filter(Boolean);
+
+    return envOrigins.includes(origin);
+};
+
 const corsOptions = {
     origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
+        if (isAllowedOrigin(origin)) {
+            callback(null, origin || true);
             return;
         }
         callback(null, false);
@@ -88,9 +106,16 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: allowedOrigins,
-        methods: ["GET", "POST"]
-    }
+        origin: (origin, callback) => {
+            if (isAllowedOrigin(origin)) {
+                callback(null, origin || true);
+                return;
+            }
+            callback(new Error("Not allowed by CORS"));
+        },
+        methods: ["GET", "POST"],
+        credentials: true,
+    },
 });
 
 io.on("connection", (socket) => {
