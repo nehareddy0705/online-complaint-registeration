@@ -42,47 +42,14 @@ import feedbackRoutes from "./Routes/Feedback.js";
 
 const app = express();
 
-const staticAllowedOrigins = [
-    "https://online-complaint-registeration.vercel.app",
-    "http://localhost:5173",
-    "http://localhost:5174",
-];
-
-const vercelOriginPattern =
-    /^https:\/\/online-complaint-registeration.*\.vercel\.app$/;
-
-const isAllowedOrigin = (origin) => {
-    if (!origin) return true;
-    if (staticAllowedOrigins.includes(origin)) return true;
-    if (vercelOriginPattern.test(origin)) return true;
-
-    const envOrigins = (process.env.CLIENT_URL || "")
-        .split(",")
-        .map((url) => url.trim())
-        .filter(Boolean);
-
-    return envOrigins.includes(origin);
-};
-
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (isAllowedOrigin(origin)) {
-            callback(null, origin || true);
-            return;
-        }
-        callback(null, false);
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-};
-app.use(cors(corsOptions));
-app.options(/.*/, cors(corsOptions));
-
-
 connectDB();
 
-
+app.use(cors({
+    origin: ["https://online-complaint-registeration.vercel.app", "http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}));
 app.use(express.json());
 
 app.get("/api/debug/logs", (req, res) => {
@@ -103,35 +70,9 @@ app.get("/", (req, res) => {
 const server = http.createServer(app);
 
 const io = new Server(server, {
-    path: "/api/socket",
     cors: {
-        origin: (origin, callback) => {
-            if (isAllowedOrigin(origin)) {
-                callback(null, origin || true);
-                return;
-            }
-            callback(new Error("Not allowed by CORS"));
-        },
-        methods: ["GET", "POST"],
-        credentials: true,
-    },
-});
-
-io.engine.on("headers", (headers, req) => {
-    const origin = req.headers.origin;
-    if (origin && isAllowedOrigin(origin)) {
-        headers["Access-Control-Allow-Origin"] = origin;
-        headers["Access-Control-Allow-Credentials"] = "true";
+        origin: "https://online-complaint-registeration.vercel.app"
     }
-});
-
-app.get("/api/health", (req, res) => {
-    res.json({
-        status: "ok",
-        corsVersion: 2,
-        allowedOrigins: staticAllowedOrigins,
-        clientUrl: process.env.CLIENT_URL || null,
-    });
 });
 
 io.on("connection", (socket) => {

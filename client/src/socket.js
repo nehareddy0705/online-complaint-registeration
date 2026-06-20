@@ -1,16 +1,6 @@
 import { io } from "socket.io-client";
 
-let socket = null;
+const socket = io(import.meta.env.PROD ? "https://online-complaint-registeration.onrender.com" : "http://localhost:5000");
 
-const SOCKET_PATH = "/api/socket";
+export default socket;
 
-export const getSocket = () => {
-  if (!socket) {
-    socket = import.meta.env.DEV
-      ? io("http://localhost:5000", { path: SOCKET_PATH })
-      : io({ path: SOCKET_PATH });
-  }
-  return socket;
-};
-
-export default getSocket;
