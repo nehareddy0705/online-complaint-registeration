@@ -232,8 +232,8 @@ const AdminDashboard = () => {
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-xl flex items-center space-x-2 text-xs font-semibold">
-              <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0" />
+            <div className="bg-[#f4e1de] border border-[#e4c1bb] text-[#7a4f47] p-4 rounded-2xl flex items-center space-x-2 text-xs font-semibold">
+              <AlertTriangle className="w-5 h-5 text-[#7a4f47] shrink-0" />
               <span>{error}</span>
             </div>
           )}
@@ -241,8 +241,8 @@ const AdminDashboard = () => {
           {/* Stats Widgets */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Total Complaints */}
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-gov-light p-3 rounded-lg text-gov-primary">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-gov-dark/10 p-3 rounded-2xl text-gov-dark">
                 <FileText className="w-6 h-6" />
               </div>
               <div>
@@ -252,8 +252,8 @@ const AdminDashboard = () => {
             </div>
 
             {/* Pending Complaints */}
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-amber-50 p-3 rounded-lg text-amber-600">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-[#efe3d0] p-3 rounded-2xl text-gov-dark">
                 <Clock className="w-6 h-6" />
               </div>
               <div>
@@ -263,8 +263,8 @@ const AdminDashboard = () => {
             </div>
 
             {/* In Progress Complaints */}
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-blue-50 p-3 rounded-lg text-blue-600">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-[#dbe6ec] p-3 rounded-2xl text-gov-dark">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <div>
@@ -274,8 +274,8 @@ const AdminDashboard = () => {
             </div>
 
             {/* Resolved Complaints */}
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-emerald-50 p-3 rounded-lg text-emerald-600">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-[#d8e4dc] p-3 rounded-2xl text-gov-dark">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
@@ -286,7 +286,7 @@ const AdminDashboard = () => {
           </div>
 
           {/* Sub-tabs Selection Row */}
-          <div className="border-b border-slate-200 flex space-x-4">
+          <div className="border-b border-[#d8cbb8] flex space-x-4">
             <button
               onClick={() => {
                 setActiveSubTab("COMPLAINTS");
@@ -335,7 +335,7 @@ const AdminDashboard = () => {
 
           {/* Sub-Tab 1: COMPLAINTS */}
           {activeSubTab === "COMPLAINTS" && (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-6">
+            <div className="surface-panel rounded-[1.5rem] overflow-hidden p-6 space-y-6">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="relative max-w-sm w-full">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -492,7 +492,7 @@ const AdminDashboard = () => {
           {activeSubTab === "AGENTS" && (
             <div className="space-y-6">
               {/* Approval Queue Section */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-4">
+              <div className="surface-panel rounded-[1.5rem] overflow-hidden p-6 space-y-4">
                 <h3 className="text-base font-bold text-slate-800 m-0 border-b border-slate-100 pb-3 flex items-center space-x-2">
                   <UserPlus className="w-5 h-5 text-amber-500" />
                   <span>Pending Agent Approvals Queue</span>
@@ -548,7 +548,7 @@ const AdminDashboard = () => {
               </div>
 
               {/* Approved/Active Agents Section */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-4">
+              <div className="surface-panel rounded-[1.5rem] overflow-hidden p-6 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
                   <h3 className="text-base font-bold text-slate-800 m-0 flex items-center space-x-2">
                     <Shield className="w-5 h-5 text-gov-primary" />
@@ -606,7 +606,7 @@ const AdminDashboard = () => {
 
           {/* Sub-Tab 3: USERS (Citizens) */}
           {activeSubTab === "USERS" && (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-4">
+            <div className="surface-panel rounded-[1.5rem] overflow-hidden p-6 space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
                 <h3 className="text-base font-bold text-slate-800 m-0 flex items-center space-x-2">
                   <Users className="w-5 h-5 text-gov-primary" />

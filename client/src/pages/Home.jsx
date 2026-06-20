@@ -50,7 +50,7 @@ const Home = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight max-w-4xl mx-auto drop-shadow-sm">
-            Public Grievance Redressal and Management System
+            A simpler way to track and resolve complaints
           </h2>
 
           <p className="text-slate-100/85 text-sm sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -104,10 +104,10 @@ const Home = () => {
       <section className="py-16 sm:py-20 px-4 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gov-dark mb-4">
-            System Key Features
+            What You Can Do
           </h2>
           <p className="text-slate-500 text-sm max-w-xl mx-auto">
-            A comprehensive, transparent administrative portal designed to empower citizens and expedite grievances.
+            Submit issues, follow progress, and connect with the right officer without the usual back-and-forth.
           </p>
         </div>
 
@@ -117,9 +117,9 @@ const Home = () => {
             <div className="w-12 h-12 bg-gov-dark/10 text-gov-dark rounded-2xl flex items-center justify-center mb-4">
               <FileText className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-gov-dark mb-2">Instant Filing</h3>
+            <h3 className="text-lg font-bold text-gov-dark mb-2">File in Minutes</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Submit complaints in diverse categories. Provide addresses, postal codes, and detailed descriptions with ease.
+              Add your issue, location details, and priority in a clean guided form.
             </p>
           </div>
 
@@ -128,9 +128,9 @@ const Home = () => {
             <div className="w-12 h-12 bg-gov-dark/10 text-gov-dark rounded-2xl flex items-center justify-center mb-4">
               <MessageSquare className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-gov-dark mb-2">Real-Time Assistance</h3>
+            <h3 className="text-lg font-bold text-gov-dark mb-2">Chat for Updates</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Direct live chat with assigned support agents. Receive updates, ask questions, and share information on-the-go.
+              Stay in touch with the assigned officer and exchange updates in one thread.
             </p>
           </div>
 
@@ -139,9 +139,9 @@ const Home = () => {
             <div className="w-12 h-12 bg-gov-dark/10 text-gov-dark rounded-2xl flex items-center justify-center mb-4">
               <Zap className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-gov-dark mb-2">Rapid Assignment</h3>
+            <h3 className="text-lg font-bold text-gov-dark mb-2">Move Faster</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Automated pipelines and admin tools ensure complaints are quickly allocated to active support personnel.
+              Complaints are routed quickly so the right team can act without delay.
             </p>
           </div>
         </div>
@@ -152,10 +152,10 @@ const Home = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gov-dark mb-4">
-              How Grievance Handling Works
+              How It Works
             </h2>
             <p className="text-slate-500 text-sm max-w-md mx-auto">
-              Follow our simple four-step grievance lifecycle from submission to verified resolution.
+              A simple flow from filing to review, updates, and resolution.
             </p>
           </div>
 
@@ -215,6 +215,14 @@ const Home = () => {
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-center sm:text-left space-y-3 sm:space-y-0">
           <p className="m-0">© 2026 Sahaay. All rights reserved.</p>
           <div className="flex space-x-4">
+            <a
+              href="https://online-complaint-registeration.onrender.com"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white cursor-pointer transition"
+            >
+              Live Site
+            </a>
             <span className="hover:text-white cursor-pointer transition">Privacy Policy</span>
             <span className="hover:text-white cursor-pointer transition">Terms of Service</span>
             <span className="hover:text-white cursor-pointer transition">Helpdesk Support</span>

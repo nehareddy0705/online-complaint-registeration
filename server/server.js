@@ -45,7 +45,10 @@ const app = express();
 connectDB();
 
 app.use(cors({
-    origin: ["https://vip-c2-online-complaint-registerati.vercel.app", "http://localhost:5173", "http://localhost:5174"],
+    origin: [
+        "https://online-complaint-registeration-btkh4t0cv.vercel.app",
+        "http://localhost:5173",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
@@ -71,7 +74,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://vip-c2-online-complaint-registerati.vercel.app"
+        origin: [
+            "https://vip-c2-online-complaint-registerati.vercel.app",
+            "https://online-complaint-registeration-btkh4t0cv.vercel.app"
+        ]
     }
 });
 

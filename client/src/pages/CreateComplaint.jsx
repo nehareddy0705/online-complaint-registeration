@@ -135,12 +135,12 @@ const CreateComplaint = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={() => navigate("/dashboard")}
-              className="bg-white border border-slate-200 p-2 rounded-lg hover:bg-slate-100 transition shadow-sm text-slate-500 hover:text-gov-primary"
+              className="bg-gov-card border border-[#d8cbb8] p-2 rounded-full hover:bg-[#efe3d0] transition shadow-sm text-slate-500 hover:text-gov-dark"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-800 m-0">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-gov-dark m-0">
                 File Official Grievance
               </h2>
               <p className="text-xs text-slate-500 m-0 mt-1 font-medium">
@@ -151,22 +151,22 @@ const CreateComplaint = () => {
 
           {/* Success Dialog */}
           {success && (
-            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl flex items-center space-x-3 text-xs font-semibold animate-bounce">
-              <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+            <div className="bg-[#e4efe8] border border-[#c7d9cf] text-gov-dark p-4 rounded-2xl flex items-center space-x-3 text-xs font-semibold animate-bounce">
+              <CheckCircle className="w-5 h-5 text-gov-dark shrink-0" />
               <span>Grievance registered successfully! Redirecting to dashboard...</span>
             </div>
           )}
 
           {/* Error Dialog */}
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-xl flex items-center space-x-3 text-xs font-semibold">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+            <div className="bg-[#f4e1de] border border-[#e4c1bb] text-[#7a4f47] p-4 rounded-2xl flex items-center space-x-3 text-xs font-semibold">
+              <AlertCircle className="w-5 h-5 text-[#7a4f47] shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
           {/* Form Card */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 md:p-8">
+          <div className="surface-panel rounded-[1.75rem] overflow-hidden p-6 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -181,7 +181,7 @@ const CreateComplaint = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Briefly state the issue (e.g., Water leakage in sector 4 main road)"
                     required
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={loading || success}
                   />
                 </div>
@@ -195,7 +195,7 @@ const CreateComplaint = () => {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     required
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={loading || success}
                   >
                     <option value="">-- Choose Department --</option>
@@ -216,7 +216,7 @@ const CreateComplaint = () => {
                     value={priority}
                     onChange={(e) => setPriority(e.target.value)}
                     required
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={loading || success}
                   >
                     <option value="LOW">LOW</option>
@@ -252,7 +252,7 @@ const CreateComplaint = () => {
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder="House / Street / Landmark details"
                     required
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={loading || success}
                   />
                 </div>
@@ -268,7 +268,7 @@ const CreateComplaint = () => {
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="e.g., Indore"
                     required
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={loading || success}
                   />
                 </div>
@@ -306,18 +306,18 @@ const CreateComplaint = () => {
                     placeholder="e.g., 452001"
                     maxLength="6"
                     required
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-full px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={loading || success}
                   />
                 </div>
               </div>
 
               {/* Submit Buttons */}
-              <div className="flex justify-end space-x-3 pt-4 border-t border-slate-100">
+              <div className="flex justify-end space-x-3 pt-4 border-t border-[#d8cbb8]">
                 <button
                   type="button"
                   onClick={() => navigate("/dashboard")}
-                  className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-bold py-2.5 px-6 rounded-lg text-sm transition"
+                  className="bg-white hover:bg-[#efe3d0] border border-[#d8cbb8] text-slate-600 font-bold py-2.5 px-6 rounded-full text-sm transition"
                   disabled={loading || success}
                 >
                   Cancel
@@ -325,7 +325,7 @@ const CreateComplaint = () => {
                 <button
                   type="submit"
                   disabled={loading || success}
-                  className="bg-gov-primary hover:bg-gov-accent text-white font-bold py-2.5 px-6 rounded-lg text-sm shadow flex items-center space-x-2 transition"
+                  className="bg-gov-dark hover:bg-gov-accent text-white font-bold py-2.5 px-6 rounded-full text-sm shadow flex items-center space-x-2 transition"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

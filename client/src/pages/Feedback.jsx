@@ -104,12 +104,12 @@ const Feedback = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={() => navigate(`/complaints/${complaintId}`)}
-              className="bg-white border border-slate-200 p-2 rounded-lg hover:bg-slate-100 transition shadow-sm text-slate-500"
+              className="bg-gov-card border border-[#d8cbb8] p-2 rounded-full hover:bg-[#efe3d0] transition shadow-sm text-slate-500"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
             <div>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-800 m-0">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-gov-dark m-0">
                 Grievance Resolution Feedback
               </h2>
               <p className="text-xs text-slate-500 m-0 mt-1 font-medium">
@@ -120,22 +120,22 @@ const Feedback = () => {
 
           {/* Success Dialog */}
           {success && (
-            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl flex items-center space-x-3 text-xs font-semibold animate-bounce">
-              <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+            <div className="bg-[#e4efe8] border border-[#c7d9cf] text-gov-dark p-4 rounded-2xl flex items-center space-x-3 text-xs font-semibold animate-bounce">
+              <CheckCircle className="w-5 h-5 text-gov-dark shrink-0" />
               <span>Feedback submitted successfully! Redirecting...</span>
             </div>
           )}
 
           {/* Error / Warning Alert */}
           {error && (
-            <div className="bg-amber-50 border border-amber-250 text-amber-900 p-4 rounded-xl flex items-start space-x-3 text-xs font-semibold">
-              <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div className="bg-[#efe3d0] border border-[#d8cbb8] text-gov-dark p-4 rounded-2xl flex items-start space-x-3 text-xs font-semibold">
+              <AlertTriangle className="w-5 h-5 text-gov-dark shrink-0 mt-0.5" />
               <div>
                 <span className="block font-bold">Feedback Blocked</span>
                 <span className="font-normal block mt-1">{error}</span>
                 <button
                   onClick={() => navigate(`/complaints/${complaintId}`)}
-                  className="mt-3 bg-amber-600 hover:bg-amber-700 text-white font-bold py-1.5 px-3 rounded text-[10px]"
+                  className="mt-3 bg-gov-dark hover:bg-gov-accent text-white font-bold py-1.5 px-3 rounded-full text-[10px]"
                 >
                   Back to Grievance Details
                 </button>
@@ -145,9 +145,9 @@ const Feedback = () => {
 
           {/* Main Card (Visible only when eligible) */}
           {!error && !success && complaint && (
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 md:p-8">
-              <div className="bg-slate-50 p-4 rounded-lg border border-slate-100 mb-6 text-xs text-slate-600">
-                <span className="font-bold text-slate-700 block">Complaint Summary</span>
+            <div className="surface-panel rounded-[1.75rem] overflow-hidden p-6 md:p-8">
+              <div className="bg-white/70 p-4 rounded-2xl border border-[#d8cbb8] mb-6 text-xs text-slate-600">
+                <span className="font-bold text-gov-dark block">Complaint Summary</span>
                 <span className="font-semibold block mt-1">Title: <span className="text-slate-800">{complaint.title}</span></span>
                 <span className="font-semibold block mt-0.5">Category: <span className="text-slate-800">{complaint.category}</span></span>
                 <span className="font-semibold block mt-0.5">Assigned Officer: <span className="text-slate-800">{complaint.assignedAgent?.name}</span></span>
@@ -200,17 +200,17 @@ const Feedback = () => {
                     onChange={(e) => setComment(e.target.value)}
                     rows="4"
                     placeholder="Provide details of your experience. Did the assigned officer resolve the issue effectively? How was the response time?"
-                    className="block w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gov-primary focus:bg-white bg-slate-50 text-slate-800 font-medium transition"
+                    className="block w-full border border-[#d8cbb8] rounded-2xl px-4 py-2.5 text-sm focus:outline-none focus:border-gov-dark focus:bg-white bg-white text-slate-800 font-medium transition"
                     disabled={submitting}
                   ></textarea>
                 </div>
 
                 {/* Form Buttons */}
-                <div className="flex justify-end space-x-3 pt-4 border-t border-slate-100">
+                <div className="flex justify-end space-x-3 pt-4 border-t border-[#d8cbb8]">
                   <button
                     type="button"
                     onClick={() => navigate(`/complaints/${complaintId}`)}
-                    className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-600 font-bold py-2.5 px-6 rounded-lg text-sm transition"
+                    className="bg-white hover:bg-[#efe3d0] border border-[#d8cbb8] text-slate-600 font-bold py-2.5 px-6 rounded-full text-sm transition"
                     disabled={submitting}
                   >
                     Cancel
@@ -218,7 +218,7 @@ const Feedback = () => {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="bg-gov-primary hover:bg-gov-accent text-white font-bold py-2.5 px-6 rounded-lg text-sm shadow flex items-center space-x-2 transition"
+                    className="bg-gov-dark hover:bg-gov-accent text-white font-bold py-2.5 px-6 rounded-full text-sm shadow flex items-center space-x-2 transition"
                   >
                     {submitting ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>

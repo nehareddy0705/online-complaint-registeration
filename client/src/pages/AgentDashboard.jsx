@@ -160,16 +160,16 @@ const AgentDashboard = () => {
 
           {/* Error Message */}
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-xl flex items-center space-x-2 text-xs font-semibold">
-              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+            <div className="bg-[#f4e1de] border border-[#e4c1bb] text-[#7a4f47] p-4 rounded-2xl flex items-center space-x-2 text-xs font-semibold">
+              <AlertCircle className="w-5 h-5 text-[#7a4f47] shrink-0" />
               <span>{error}</span>
             </div>
           )}
 
           {/* Stats Summary row */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-gov-light p-3 rounded-lg text-gov-primary">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-gov-dark/10 p-3 rounded-2xl text-gov-dark">
                 <FileText className="w-6 h-6" />
               </div>
               <div>
@@ -178,8 +178,8 @@ const AgentDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-blue-50 p-3 rounded-lg text-blue-600">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-[#dbe6ec] p-3 rounded-2xl text-gov-dark">
                 <Clock className="w-6 h-6" />
               </div>
               <div>
@@ -188,8 +188,8 @@ const AgentDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-indigo-50 p-3 rounded-lg text-indigo-600">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-[#dbe6ec] p-3 rounded-2xl text-gov-dark">
                 <AlertCircle className="w-6 h-6" />
               </div>
               <div>
@@ -198,8 +198,8 @@ const AgentDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="bg-emerald-50 p-3 rounded-lg text-emerald-600">
+            <div className="surface-panel p-5 rounded-[1.25rem] flex items-center space-x-4">
+              <div className="bg-[#d8e4dc] p-3 rounded-2xl text-gov-dark">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <div>
@@ -210,7 +210,7 @@ const AgentDashboard = () => {
           </div>
 
           {/* Table Container */}
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden p-6 space-y-6">
+          <div className="surface-panel rounded-[1.5rem] overflow-hidden p-6 space-y-6">
             
             {/* Search and Tabs */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

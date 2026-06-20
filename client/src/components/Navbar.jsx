@@ -28,6 +28,14 @@ const Navbar = () => {
           <span className="hidden sm:inline text-white/60">Simple, secure, tracked</span>
         </div>
         <div className="flex items-center space-x-3 text-white/60">
+          <a
+            href="https://online-complaint-registeration.onrender.com"
+            target="_blank"
+            rel="noreferrer"
+            className="cursor-pointer hover:text-white transition"
+          >
+            Live Site
+          </a>
           <span className="cursor-pointer hover:text-white transition">Help</span>
           <span>|</span>
           <span className="cursor-pointer hover:text-white transition">English</span>

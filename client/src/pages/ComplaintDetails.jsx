@@ -119,13 +119,13 @@ const ComplaintDetails = () => {
       <div className="flex-1 flex bg-gov-light">
         <Sidebar />
         <main className="flex-1 p-8">
-          <div className="bg-red-50 border border-red-200 text-red-800 p-6 rounded-xl text-center max-w-lg mx-auto">
-            <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
+          <div className="surface-panel text-center max-w-lg mx-auto p-6 rounded-[1.75rem]">
+            <AlertTriangle className="w-12 h-12 text-[#7a4f47] mx-auto mb-4" />
             <h3 className="text-lg font-bold">Error Accessing Complaint</h3>
             <p className="text-xs mt-2">{error || "Complaint details could not be found."}</p>
             <button
               onClick={() => navigate(getBackPath())}
-              className="mt-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs py-2 px-4 rounded-lg"
+              className="mt-4 bg-gov-dark hover:bg-gov-accent text-white font-bold text-xs py-2 px-4 rounded-full"
             >
               Back to Dashboard
             </button>
@@ -151,7 +151,7 @@ const ComplaintDetails = () => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate(getBackPath())}
-                className="bg-white border border-slate-200 p-2 rounded-lg hover:bg-slate-100 transition shadow-sm text-slate-500 hover:text-gov-primary"
+                className="bg-gov-card border border-[#d8cbb8] p-2 rounded-full hover:bg-[#efe3d0] transition shadow-sm text-slate-500 hover:text-gov-dark"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
@@ -159,7 +159,7 @@ const ComplaintDetails = () => {
                 <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
                   Grievance ID: {complaint._id}
                 </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-800 m-0 leading-tight">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-gov-dark m-0 leading-tight">
                   {complaint.title}
                 </h2>
               </div>
@@ -168,7 +168,7 @@ const ComplaintDetails = () => {
 
           {/* Progress Tracker (For regular flow) */}
           {complaint.status !== "REJECTED" && (
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div className="surface-panel p-6 rounded-3xl">
               <div className="flex justify-between items-center relative">
                 {/* Connector line */}
                 <div className="absolute top-4 left-0 right-0 h-1 bg-slate-200 z-0"></div>
@@ -215,7 +215,7 @@ const ComplaintDetails = () => {
 
           {complaint.status === "REJECTED" && (
             <div className="bg-red-50 border border-red-200 p-4 rounded-xl flex items-center space-x-3 text-xs text-red-800 font-bold">
-              <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0" />
+              <AlertTriangle className="w-5 h-5 text-red-600 shrink-0" />
               <span>This grievance has been REJECTED by administration. No further action is required.</span>
             </div>
           )}
@@ -227,7 +227,7 @@ const ComplaintDetails = () => {
             <div className="lg:col-span-2 space-y-6">
               
               {/* Main details card */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-5">
+              <div className="surface-panel rounded-3xl p-6 space-y-5">
                 <div>
                   <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-3 m-0">
                     Grievance Information
@@ -272,7 +272,7 @@ const ComplaintDetails = () => {
               </div>
 
               {/* Agent info & Actions card */}
-              <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+              <div className="surface-panel rounded-3xl p-6 space-y-4">
                 <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-3 m-0">
                   Assigned Officer Details
                 </h3>
