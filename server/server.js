@@ -60,11 +60,12 @@ const corsOptions = {
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
 };
+app.use(cors(corsOptions));
+
 
 connectDB();
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+
 app.use(express.json());
 
 app.get("/api/debug/logs", (req, res) => {
